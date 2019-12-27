@@ -11,7 +11,12 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function() {
+    $p = ['title' => 'Find the Force'];
+    return view('inicio', compact('p'));
+});
+
+Route::get('/welcome', function () {
     return view('welcome');
 });
 
