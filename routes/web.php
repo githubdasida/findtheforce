@@ -23,7 +23,7 @@ Route::get('/', function() {
 
 Route::get('/welcome', function () {
     return view('welcome');
-});
+})->middleware('password.confirm');
 
 Auth::routes(['verify' => true]);
 

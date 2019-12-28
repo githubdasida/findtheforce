@@ -1,22 +1,27 @@
-@extends('layouts.app')
+@extends('default')
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+@section('title')
+    Confirmación de contraseña | Find the Force
+@endsection
+
+@section('contenido')
+<section class="container d-flex flex-grow-1 justify-content-center align-items-center" id="contenido">
+    <div class="row">
+        <div class="col-md d-flex flex-column justify-content-center">
+            <h1 class="glitch">Acceso<br>Dark Side</h1>
+        </div>
+        <div class="col-md">
             <div class="card">
-                <div class="card-header">{{ __('Confirm Password') }}</div>
-
                 <div class="card-body">
-                    {{ __('Please confirm your password before continuing.') }}
+                    <strong class="mb-5">{{ __('Please confirm your password before continuing.') }}</strong>
 
-                    <form method="POST" action="{{ route('password.confirm') }}">
+                    <form method="POST" class="mt-3" action="{{ route('password.confirm') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <div class="form-group row d-flex flex-column">
+                            <label for="password" class="col col-form-label">{{ __('Password') }}</label>
 
-                            <div class="col-md-6">
+                            <div class="col">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
@@ -28,8 +33,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-dark">
                                     {{ __('Confirm Password') }}
                                 </button>
 
@@ -45,5 +50,5 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 @endsection
