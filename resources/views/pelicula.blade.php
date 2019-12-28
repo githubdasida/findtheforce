@@ -18,9 +18,10 @@
                 <div class="card-body">
                     <h2>{{$r['title']}}</h2>
                     <p>{{$r['opening_crawl']}}</p>
+                    <h5>Actores</h5>
                     <ul>
                         @foreach ($r['characters'] as $actor)
-                            <li><a href="">actor</a></li>
+                            <li><a href="/actor/"><i class="far fa-heart"></i></a></li>
                         @endforeach
                     </ul>
                 </div>
