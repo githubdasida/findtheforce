@@ -20,10 +20,9 @@
                     <ul>
                         @foreach ($r['results'] as $film)
                             @php
-                                $url = explode('/', $r['url']);
-                                dd($url);
+                                $url = explode('/', $film['url']);
                             @endphp
-                            <li><a href="/pelicula/{{$url}}">{{$film['title']}}</a></li>
+                            <li><a href="/pelicula/{{$url[5]}}">{{$film['title']}}</a></li>
                         @endforeach
                     </ul>
                 </div>
