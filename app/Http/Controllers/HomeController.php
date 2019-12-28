@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -55,6 +56,18 @@ class HomeController extends Controller
             array_push($actores, $p);
         }
 
-        return view('pelicula', compact('r', 'actores'));
+        $favoritos = Auth::user()->favoritos;
+
+        return view('pelicula', compact('r', 'actores', 'favoritos'));
+    }
+
+    public function favoritos($id) {
+        $user = Auth::user();
+        $f = $user->favoritos;
+        if(in_array($id, $f)){
+
+        } else {
+            array_push($f, $id);
+        }
     }
 }
