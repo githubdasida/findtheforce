@@ -24,12 +24,12 @@
                             @php
                                 $url = explode('/', $actor['url']);
                             @endphp
-                            <i class="row">
+                            <li class="row d-flex">
                                 <div class="col-md-8">
                                     {{$actor['name']}}
                                 </div>
                                 <div class="col-md-4">
-                                    <a href="/actor/{{$url[5]}}/fav"><i class="far fa-heart"></i></a></i>
+                                    <a href="/actor/{{$url[5]}}/fav"><i class="far fa-heart"></i></a></li>
                                 </div>
                         @endforeach
                     </ul>

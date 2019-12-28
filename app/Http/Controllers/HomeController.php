@@ -55,6 +55,6 @@ class HomeController extends Controller
             array_push($actores, $p);
         }
 
-        return view('pelicula', compact('r, actores'));
+        return view('pelicula', compact('r', 'actores'));
     }
 }
