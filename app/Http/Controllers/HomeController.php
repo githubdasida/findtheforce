@@ -44,10 +44,17 @@ class HomeController extends Controller
             'timeout'  => 2.0,
         ]);
 
-        $response = $client->request('GET', "films/{$id}");
-    
+        $response = $client->request('GET', "films/{$id}");    
         $r =  json_decode($response->getBody(), true);
+            
+        $actores =[];
+        foreach($r['characters'] as $actor) {
+            $ida = explode('/', $actor);
+            $response2 = $client->request('GET', "people/{$ida[5]}");
+            $p = json_decode($response2->getBody(), true);
+            array_push($actores, $p);
+        }
 
-        return view('pelicula', compact('r'));
+        return view('pelicula', compact('r, actores'));
     }
 }

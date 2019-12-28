@@ -20,8 +20,17 @@
                     <p>{{$r['opening_crawl']}}</p>
                     <h5>Actores</h5>
                     <ul>
-                        @foreach ($r['characters'] as $actor)
-                            <li><a href="/actor/"><i class="far fa-heart"></i></a></li>
+                        @foreach ($actores as $actor)
+                            @php
+                                $url = explode('/', $actor['url']);
+                            @endphp
+                            <i class="row">
+                                <div class="col-md-8">
+                                    {{$actor['name']}}
+                                </div>
+                                <div class="col-md-4">
+                                    <a href="/actor/{{$url[5]}}/fav"><i class="far fa-heart"></i></a></i>
+                                </div>
                         @endforeach
                     </ul>
                 </div>
