@@ -4,10 +4,6 @@
     <a href="/"><img src="/images/logo.png" alt="find the force logo" class="logo"></a>
 @endsection
 
-@section('contenido')
-    @yield('contenido')
-@endsection
-
 @section('footer')
     <div class="row">
         <div class="col-md">

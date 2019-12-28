@@ -11535,6 +11535,10 @@ div:after {
   margin-left: 20px;
 }
 
+#contenedor #contenido .card {
+  width: 50%;
+}
+
 #contenedor footer {
   margin-bottom: 25px;
 }
