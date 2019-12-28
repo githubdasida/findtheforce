@@ -16,10 +16,11 @@
         <div class="col-md">
             <div class="card card-long">
                 <div class="card-body">
-                    <h2>Películas</h2>
+                    <h2>{{$r['title']}}</h2>
+                    <p>{{$r['opening_crawl']}}</p>
                     <ul>
-                        @foreach ($r['results'] as $film)
-                    <li><a href="/pelicula/{{$film['episode_id']}}">{{$film['title']}}</a></li>
+                        @foreach ($r['characters'] as $actor)
+                            <li><a href="">actor</a></li>
                         @endforeach
                     </ul>
                 </div>
