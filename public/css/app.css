@@ -11499,7 +11499,7 @@ div:after {
 }
 
 #contenedor {
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(/images/92676.jpg?cba5b16dc840622ac68a94f839e21fce);
   background-repeat: no-repeat;
   background-position: center;
@@ -11525,6 +11525,10 @@ div:after {
   #contenedor #contenido .row h1 {
     font-size: 3em;
   }
+
+  #contenedor #contenido .row h1.r {
+    font-size: 2.5em;
+  }
 }
 
 #contenedor #contenido .row .botones {
@@ -11537,6 +11541,14 @@ div:after {
 
 #contenedor #contenido .card {
   width: 50%;
+  margin: 20px 0 20px 0;
+}
+
+@media screen and (max-width: 767px) {
+  #contenedor #contenido .card {
+    width: 100%;
+    margin-top: 50px;
+  }
 }
 
 #contenedor footer {
