@@ -18,8 +18,9 @@
                 <div class="card-body">
                     <h2>Películas</h2>
                     <ul>
-                        @foreach ($r['results'] as $film)
-                    <li><a href="/pelicula/{{$film['episode_id']}}">{{$film['title']}}</a></li>
+                        @foreach ($r['results'] as $key=>$film)
+                            <li><a href="/pelicula/{{$key}}">{{$film['title']}}</a></li>
+                            {{ ++$key }}
                         @endforeach
                     </ul>
                 </div>

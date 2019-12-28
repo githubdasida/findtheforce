@@ -48,6 +48,6 @@ class HomeController extends Controller
     
         $r =  json_decode($response->getBody(), true);
 
-        return view('pelicula', compact($r));
+        return view('pelicula', compact('r'));
     }
 }
