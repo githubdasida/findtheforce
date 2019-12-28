@@ -9,8 +9,8 @@
     <title>@yield('title')</title>
 
     {{-- Favicon --}}
-    <link rel="icon" sizes="196x196" href="https://lumiere-a.akamaihd.net/v1/images/sw-favicon-2018-v1-b-400x400_ba2ac2bc.png?region=0%2C0%2C400%2C400">
-    <link rel="shortcut icon" href="https://lumiere-a.akamaihd.net/v1/images/sw-favicon-2018-v1-b-400x400_ba2ac2bc.png?region=0%2C0%2C400%2C400">
+    <link rel="icon" sizes="196x196" href="images/sw-favicon-2018-v1-b-400x400_ba2ac2bc.webp">
+    <link rel="shortcut icon" href="images/sw-favicon-2018-v1-b-400x400_ba2ac2bc.webp">
 
     {{-- CSS --}}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
