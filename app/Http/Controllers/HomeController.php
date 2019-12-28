@@ -69,5 +69,7 @@ class HomeController extends Controller
         } else {
             array_push($f, $id);
         }
+
+        return back(); 
     }
 }
