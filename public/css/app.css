@@ -11539,6 +11539,13 @@ div:after {
   margin-left: 20px;
 }
 
+#contenedor #contenido .row .g-recaptcha {
+  -webkit-transform: scale(0.63);
+          transform: scale(0.63);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+}
+
 #contenedor #contenido .card {
   width: 50%;
   margin: 20px 0 20px 0;
