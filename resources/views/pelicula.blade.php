@@ -31,6 +31,7 @@
                                 <div class="col-md-4">
                                     <a href="/actor/{{$url[5]}}/fav"><i class="far fa-heart"></i></a></li>
                                 </div>
+                            </li>
                         @endforeach
                     </ul>
                 </div>
