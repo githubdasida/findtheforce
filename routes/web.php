@@ -12,7 +12,7 @@
 */
 
 use Illuminate\Support\Facades\Auth;
-use GuzzleHttp\Client;
+
 
 Route::get('/', function() {
     if(Auth::user()){
