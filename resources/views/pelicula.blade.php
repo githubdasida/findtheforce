@@ -24,13 +24,13 @@
                             @php
                                 $url = explode('/', $actor['url']);
                             @endphp
-                            <li class="row d-flex">
-                                <div class="col-md-8">
+                            <li>
                                     {{$actor['name']}}
-                                </div>
-                                <div class="col-md-4">
-                                    <a href="/actor/{{$url[5]}}/fav"><i class="far fa-heart"></i></a></li>
-                                </div>
+                                    @if (in_array($url[5], $favoritos))
+                                        <a href="/actor/{{$url['5']}}/fav"><i class="fas fa-heart"></i></a></li>
+                                    @else
+                                        <a href="/actor/{{$url['5']}}/fav"><i class="far fa-heart"></i></a></li>
+                                    @endif
                             </li>
                         @endforeach
                     </ul>
