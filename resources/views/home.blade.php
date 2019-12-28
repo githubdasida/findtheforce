@@ -19,9 +19,16 @@
                     <h2>Películas</h2>
                     <ul>
                         @foreach ($r['results'] as $film)
+                            @php
+                                $idd = 0;    
+                            @endphp
                             @foreach (explode('/', $film['url']) as $id)
-                                <li><a href="/pelicula/{{$id}}">{{$film['title']}}</a></li>
+                                @php
+                                    dd($id);
+                                    $idd = $id[6];    
+                                @endphp
                             @endforeach
+                            <li><a href="/pelicula/{{$idd}}">{{$film['title']}}</a></li>
                         @endforeach
                     </ul>
                 </div>
