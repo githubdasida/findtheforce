@@ -11490,7 +11490,11 @@ div:after {
 #contenedor footer ul li a:active,
 #contenedor footer ul li a:hover,
 #contenedor footer,
-#contenedor #contenido .row h1 {
+#contenedor #contenido .row h1,
+#contenedor header nav a,
+#contenedor header nav a:link,
+#contenedor header nav a:active,
+#contenedor header nav a:hover {
   color: white;
   font-weight: bold;
   text-transform: uppercase;
@@ -11500,6 +11504,7 @@ div:after {
 
 #contenedor {
   min-height: 100vh;
+  overflow-x: hidden;
   background-image: url(/images/92676.jpg?cba5b16dc840622ac68a94f839e21fce);
   background-repeat: no-repeat;
   background-position: center;
@@ -11509,6 +11514,13 @@ div:after {
 #contenedor header .logo {
   width: 175px;
   margin-top: 20px;
+}
+
+#contenedor header nav a.dropdown-item,
+#contenedor header nav a:link.dropdown-item,
+#contenedor header nav a:active.dropdown-item,
+#contenedor header nav a:hover.dropdown-item {
+  color: black;
 }
 
 #contenedor #contenido .row {
@@ -11556,6 +11568,10 @@ div:after {
     width: 100%;
     margin-top: 50px;
   }
+}
+
+#contenedor #contenido .card.card-long {
+  width: 100%;
 }
 
 #contenedor footer {

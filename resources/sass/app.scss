@@ -38,6 +38,16 @@
             width: 175px;
             margin-top: 20px;;
         }
+
+        nav {
+            a, a:link, a:active, a:hover {
+                @extend %Roboto;
+
+                &.dropdown-item {
+                    color: black;
+                }
+            }
+        }
     }
 
     #contenido {
@@ -81,6 +91,10 @@
             @media screen and (max-width: 767px){
                 width: 100%;
                 margin-top: 50px;
+            }
+
+            &.card-long {
+                width: 100%;
             }
         }
 
