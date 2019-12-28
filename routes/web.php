@@ -29,3 +29,4 @@ Route::get('/welcome', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
+Route::get('/pelicula/{id}', 'HomeController@show')->middleware('verified');

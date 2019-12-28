@@ -15,6 +15,11 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        $client = new Client([
+            'base_uri' => 'https://swapi.co/api/',
+            'timeout'  => 2.0,
+        ]);
     }
 
     /**
@@ -24,15 +29,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $client = new Client([
-            'base_uri' => 'https://swapi.co/api/',
-            'timeout'  => 2.0,
-        ]);
     
         $response = $client->request('GET', 'films');
     
         $r =  json_decode($response->getBody(), true);
 
         return view('home', compact('r'));
+    }
+
+    public function show($id) {
+
+        $response = $client->request('GET', "films/{$id}");
+    
+        $r =  json_decode($response->getBody(), true);
+
+        return view('pelicula', compact($r));
     }
 }
