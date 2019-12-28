@@ -16,9 +16,10 @@
         <div class="col-md">
             <div class="card card-long">
                 <div class="card-body">
+                    <h2>Películas</h2>
                     <ul>
                         @foreach ($r['results'] as $film)
-                            <li><a href="http://">{{$flim->title}}</a></li>
+                    <li><a href="/pelicula/{{$film['episode_id']}}">{{$film['title']}}</a></li>
                         @endforeach
                     </ul>
                 </div>
