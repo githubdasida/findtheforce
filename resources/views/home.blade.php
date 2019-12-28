@@ -11,6 +11,7 @@
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
                 <a href="{{ route('register') }}" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
+                {{$r->count}}
             </div>
         </div>
         <div class="col-md">

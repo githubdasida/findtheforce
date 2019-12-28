@@ -29,14 +29,3 @@ Route::get('/welcome', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
-
-Route::get('/test', function() {
-    $client = new Client([
-        'base_uri' => 'https://swapi.co/api',
-        'timeout'  => 2.0,
-    ]);
-
-    $response = $client->request('GET', 'films');
-
-    dd($response);
-}); 

@@ -23,6 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $client = new Client([
+            'base_uri' => 'https://swapi.co/api/',
+            'timeout'  => 2.0,
+        ]);
+    
+        $response = $client->request('GET', 'films');
+    
+        $r =  json_decode($response->getBody(), true);
+
+        return view('home', compact('r'));
     }
 }
