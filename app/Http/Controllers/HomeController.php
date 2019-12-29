@@ -104,7 +104,7 @@ class HomeController extends Controller
             Auth::user()->favorites()->attach($actor->id);
         } else {
             $actor = Actor::where('api_id', $id)->get()[0];
-            if(in_array($actor->api_id, $this->getFavoritos())) {
+            if(in_array($actor->api_id, $this->favoritesToAPI())) {
                 Auth::user()->favorites()->detach($actor->id);
             } else {
                 Auth::user()->favorites()->attach($actor->id);
