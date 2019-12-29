@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFavList extends Migration
+class CreateActorsUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddFavList extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->json('favoritos')->nullable();
+        Schema::create('actor_user', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('actor_id');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddFavList extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('favoritos');
-        });
+        Schema::dropIfExists('actor_user');
     }
 }

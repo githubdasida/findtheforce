@@ -10,7 +10,7 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
-                <a href="{{ route('register') }}" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
+                <a href="/favoritos" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
             </div>
         </div>
         <div class="col-md">

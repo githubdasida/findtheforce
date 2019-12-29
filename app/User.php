@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use App\Actor;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -16,7 +17,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'favoritos',
+        'name', 'email', 'password',
     ];
 
     /**
@@ -36,4 +37,17 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function favoritos() {
+        return $this->belongsToMany('App\Actor');
+    }
+
+    public function getFavoritos() {
+        $f = [];
+        foreach($this->favoritos as $favorito) {
+            array_push($f, $favorito->api_id);
+        }
+
+        return $f;
+    }
 }

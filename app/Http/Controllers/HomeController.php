@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use GuzzleHttp\Client;
+use App\Repositories\Peticiones;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+
+    protected $peticiones;
+
+
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Peticiones $peticiones)
     {
         $this->middleware('auth');
     }
@@ -25,51 +29,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-        $client = new Client([
-            'base_uri' => 'https://swapi.co/api/',
-            'timeout'  => 2.0,
-        ]);
     
-        $response = $client->request('GET', 'films');
-    
-        $r =  json_decode($response->getBody(), true);
+        $r = $this->peticiones->peliculas();
 
         return view('home', compact('r'));
     }
 
     public function show($id) {
 
-        $client = new Client([
-            'base_uri' => 'https://swapi.co/api/',
-            'timeout'  => 2.0,
-        ]);
-
-        $response = $client->request('GET', "films/{$id}");    
-        $r =  json_decode($response->getBody(), true);
+        $pelicula = $this->peticiones->pelicula($id);
             
-        $actores =[];
-        foreach($r['characters'] as $actor) {
-            $ida = explode('/', $actor);
-            $response2 = $client->request('GET', "people/{$ida[5]}");
-            $p = json_decode($response2->getBody(), true);
-            array_push($actores, $p);
-        }
+        $actores = $this->peticiones->actoresDe($pelicula);
 
-        $favoritos = Auth::user()->favoritos;
+        $favoritos = $this->peticiones->favoritos(Auth::user()->getFavoritos);
 
         return view('pelicula', compact('r', 'actores', 'favoritos'));
-    }
-
-    public function favoritos($id) {
-        $user = Auth::user();
-        $f = $user->favoritos;
-        if(in_array($id, $f)){
-
-        } else {
-            array_push($f, $id);
-        }
-
-        return back(); 
     }
 }
