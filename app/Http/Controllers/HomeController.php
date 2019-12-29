@@ -53,6 +53,17 @@ class HomeController extends Controller
         return view('pelicula', compact('pelicula', 'actores', 'favoritos', 'fav'));
     }
 
+    public function favoritos() {
+        $favoritos = $this->peticiones->favoritos($this->getFavoritos());
+
+        $fav = [];
+        foreach($favoritos as $favorito) {
+            array_push($fav, $favorito['url']);
+        }
+
+        return view('favoritos', compact('favoritos', 'fav'));
+    }
+
     public function getFavoritos() {
         $f = [];
         foreach(Auth::user()->favoritos as $favorito) {
@@ -70,10 +81,11 @@ class HomeController extends Controller
 
             Auth::user()->favoritos()->attach($actor->id);
         } else {
-            if(in_array($id, $this->getFavoritos())) {
-                Auth::user()->favoritos()->detach($id);
+            $actor = Actor::where('api_id', $id)->get()[0];
+            if(in_array($actor->api_id, $this->getFavoritos())) {
+                Auth::user()->favoritos()->detach($actor->id);
             } else {
-                Auth::user()->favoritos()->attach($id);
+                Auth::user()->favoritos()->attach($actor->id);
             }
         }
         return back();

@@ -17,7 +17,6 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton('GuzzleHttp\Client', function() {
             return new Client([
                 'base_uri' => 'https://swapi.co/api/',
-                'timeout'  => 2.0,
             ]);
         });
     }
