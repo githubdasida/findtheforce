@@ -57,7 +57,7 @@ class HomeController extends Controller
         $actores = $this->peticiones->favoritos($this->getFavoritos());
 
         $fav = [];
-        foreach($favoritos as $favorito) {
+        foreach($actores as $favorito) {
             array_push($fav, $favorito['url']);
         }
 
