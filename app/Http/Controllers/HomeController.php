@@ -49,7 +49,7 @@ class HomeController extends Controller
 
     public function getFavoritos() {
         $f = [];
-        foreach(Auth::user()->getFavoritos as $favorito) {
+        foreach(Auth::user()->favoritos as $favorito) {
             array_push($f, $favorito->api_id);
         }
 
