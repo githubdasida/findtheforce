@@ -48,7 +48,7 @@ class Peticiones {
 
         foreach($favoritos as $favorito) {
             $actor = $this->actor($favorito);
-            array_push($actores, $actor); 
+            array_push($favoritos, $actor); 
         }
 
         return $favoritos;

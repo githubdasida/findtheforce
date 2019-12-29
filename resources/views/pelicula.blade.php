@@ -10,8 +10,8 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
-                <a href="/" class="btn btn-outline-light ml-0">Películas</a>
-                <a href="/favoritos" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
+                <a href="/" class="btn btn-outline-light">Películas</a>
+                <a href="/favoritos" class="btn btn-outline-light">Personajes Favoritos</a>
             </div>
         </div>
         <div class="col-md">

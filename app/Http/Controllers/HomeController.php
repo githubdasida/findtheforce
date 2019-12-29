@@ -63,15 +63,10 @@ class HomeController extends Controller
             $actor->api_id = $id;
             $actor->save();
 
-            Auth::user()->favoritos->attach($actor->id);
-
-        } else {
-            $actor = new Actor;
-            $actor->api_id = $id;
-            $actor->save();
-
             Auth::user()->favoritos()->attach($actor->id);
+        } else {
+
         }
-        // return back();
+        return back();
     }
 }
