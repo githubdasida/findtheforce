@@ -20,6 +20,7 @@ class HomeController extends Controller
     public function __construct(Peticiones $peticiones)
     {
         $this->middleware('auth');
+        $this->peticiones = $peticiones;
     }
 
     /**
