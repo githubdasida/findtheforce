@@ -10,8 +10,8 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
-                <a href="/" class="btn btn-outline-light">Películas</a>
-                <a href="/favoritos" class="btn btn-outline-light">Personajes Favoritos</a>
+                <a href="/" class="btn btn-outline-light ml-0">Películas</a>
+                <a href="/favoritos" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
             </div>
         </div>
         <div class="col-md">
@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <h2>{{$pelicula['title']}}</h2>
                     <p>{{$pelicula['opening_crawl']}}</p>
-                    <h5>Actors</h5>
+                    <h5>Actores</h5>
                     <ul>
                         @foreach ($actores as $actor)
                             @php
@@ -27,7 +27,7 @@
                             @endphp
                             <li>
                                     {{$actor['name']}}
-                                    @if (in_array($actor['url'], $fav))
+                                    @if (in_array($url[5], $favoritos))
                                         <a href="/actor/{{$url['5']}}/fav"><i class="fas fa-heart"></i></a></li>
                                     @else
                                         <a href="/actor/{{$url['5']}}/fav"><i class="far fa-heart"></i></a></li>

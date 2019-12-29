@@ -54,14 +54,14 @@ class HomeController extends Controller
     }
 
     public function favoritos() {
-        $favoritos = $this->peticiones->favoritos($this->getFavoritos());
+        $actores = $this->peticiones->favoritos($this->getFavoritos());
 
         $fav = [];
         foreach($favoritos as $favorito) {
             array_push($fav, $favorito['url']);
         }
 
-        return view('favoritos', compact('favoritos', 'fav'));
+        return view('favoritos', compact('actores', 'fav'));
     }
 
     public function getFavoritos() {
