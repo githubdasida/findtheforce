@@ -41,13 +41,4 @@ class User extends Authenticatable implements MustVerifyEmail
     public function favoritos() {
         return $this->belongsToMany('App\Actor');
     }
-
-    public function getFavoritos() {
-        $f = [];
-        foreach($this->favoritos as $favorito) {
-            array_push($f, $favorito->api_id);
-        }
-
-        return $f;
-    }
 }

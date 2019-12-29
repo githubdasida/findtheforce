@@ -42,8 +42,17 @@ class HomeController extends Controller
             
         $actores = $this->peticiones->actoresDe($pelicula);
 
-        $favoritos = $this->peticiones->favoritos(Auth::user()->getFavoritos);
+        $favoritos = $this->peticiones->favoritos($this->getFavoritos());
 
         return view('pelicula', compact('r', 'actores', 'favoritos'));
+    }
+
+    public function getFavoritos() {
+        $f = [];
+        foreach(Auth::user()->getFavoritos as $favorito) {
+            array_push($f, $favorito->api_id);
+        }
+
+        return $f;
     }
 }
