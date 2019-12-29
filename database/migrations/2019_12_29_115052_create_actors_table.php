@@ -15,7 +15,7 @@ class CreateActorsTable extends Migration
     {
         Schema::create('actors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('api_id')->unique();
+            $table->integer('api_id');
             $table->timestamps();
         });
     }
