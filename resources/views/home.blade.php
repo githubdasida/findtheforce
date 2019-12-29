@@ -22,7 +22,7 @@
                             @php
                                 $url = explode('/', $film['url']);
                             @endphp
-                            <li><a href="/pelicula/{{$url[5]}}">{{$film['title']}}</a></li>
+                            <li><a href="/film/{{$url[5]}}">{{$film['title']}}</a></li>
                         @endforeach
                     </ul>
                 </div>
