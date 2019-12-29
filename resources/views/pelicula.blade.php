@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-    {{$r['title']}} | Find the Force
+    {{$pelicula['title']}} | Find the Force
 @endsection
 
 @section('contenido')
@@ -10,15 +10,16 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
+                <a href="/" class="btn btn-outline-light ml-0">Películas</a>
                 <a href="/favoritos" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
             </div>
         </div>
         <div class="col-md">
             <div class="card card-long">
                 <div class="card-body">
-                    <h2>{{$r['title']}}</h2>
-                    <p>{{$r['opening_crawl']}}</p>
-                    <h5>Actores</h5>
+                    <h2>{{$pelicula['title']}}</h2>
+                    <p>{{$pelicula['opening_crawl']}}</p>
+                    <h5>Actors</h5>
                     <ul>
                         @foreach ($actores as $actor)
                             @php

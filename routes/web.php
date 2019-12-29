@@ -30,4 +30,5 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 Route::get('/pelicula/{id}', 'HomeController@show')->middleware('verified');
-Route::get('/actor/{id}/fav', 'HomeController@favoritos')->middleware('verified');
+Route::get('/actor/{id}/fav', 'HomeController@addFav')->middleware('verified');
+Route::get('/favoritos', 'HomeController@favoritos')->middleware('verified')->middleware('password.confirm');

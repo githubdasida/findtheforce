@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repositories\Peticiones;
+use App\Actor;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -44,7 +45,7 @@ class HomeController extends Controller
 
         $favoritos = $this->peticiones->favoritos($this->getFavoritos());
 
-        return view('pelicula', compact('r', 'actores', 'favoritos'));
+        return view('pelicula', compact('pelicula', 'actores', 'favoritos'));
     }
 
     public function getFavoritos() {
@@ -54,5 +55,19 @@ class HomeController extends Controller
         }
 
         return $f;
+    }
+
+    public function addFav($id) {
+        if(!Actor::where('api_id', $id)->get()) {
+            $actor = new Actor;
+            $actor->api_id = $id;
+            $actor->save();
+
+            Auth::user()->favoritos->attach($actor->id);
+
+        } else {
+            
+        }
+        return back();
     }
 }
