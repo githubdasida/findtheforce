@@ -63,14 +63,18 @@ class HomeController extends Controller
     }
 
     public function addFav($id) {
-        if(!Actor::where('api_id', $id)) {
+        if(Actor::where('api_id', $id)->get() == []) {
             $actor = new Actor;
             $actor->api_id = $id;
             $actor->save();
 
             Auth::user()->favoritos()->attach($actor->id);
         } else {
-
+            if(in_array($id, $this->getFavoritos()) {
+                return 'este esta';
+            } else {
+                Auth::user()->favoritos()->attach($id);
+            }
         }
         return back();
     }
