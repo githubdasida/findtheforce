@@ -45,7 +45,12 @@ class HomeController extends Controller
 
         $favoritos = $this->peticiones->favoritos($this->getFavoritos());
 
-        return view('pelicula', compact('pelicula', 'actores', 'favoritos'));
+        $fav = [];
+        foreach($favoritos as $favorito) {
+            array_push($fav, $favorito['url']);
+        }
+
+        return view('pelicula', compact('pelicula', 'actores', 'favoritos', 'fav'));
     }
 
     public function getFavoritos() {

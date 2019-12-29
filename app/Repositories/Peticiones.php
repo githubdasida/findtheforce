@@ -44,13 +44,13 @@ class Peticiones {
     }
 
     public function favoritos($favoritos) {
-        $favoritos = [];
+        $fav = [];
 
         foreach($favoritos as $favorito) {
             $actor = $this->actor($favorito);
-            array_push($favoritos, $actor); 
+            array_push($fav, $actor); 
         }
 
-        return $favoritos;
+        return $fav;
     }
 }
