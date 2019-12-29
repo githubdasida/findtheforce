@@ -3,14 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repositories\Peticiones;
+use App\Repositories\Petitions;
 use App\Actor;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
 
-    protected $peticiones;
+    protected $petitions;
 
 
     /**
@@ -18,10 +18,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(Peticiones $peticiones)
+    public function __construct(Petitions $petitions)
     {
         $this->middleware('auth');
-        $this->peticiones = $peticiones;
+        $this->petitions = $petitions;
     }
 
     /**
@@ -32,60 +32,82 @@ class HomeController extends Controller
     public function index()
     {
     
-        $r = $this->peticiones->peliculas();
+        $response = $this->petitions->getFilms();
 
-        return view('home', compact('r'));
+        return view('home', compact('response'));
     }
 
+    /*
+     * Muestra la película individual con sus personajes.
+     */
     public function show($id) {
 
-        $pelicula = $this->peticiones->pelicula($id);
+        $film = $this->petitions->getFilm($id);
             
-        $actores = $this->peticiones->actoresDe($pelicula);
+        $actors = $this->petitions->actorsOf($film);
 
-        $favoritos = $this->peticiones->favoritos($this->getFavoritos());
+        $favorites = $this->petitions->getFavorites($this->favoritesToAPI());
 
-        $fav = [];
-        foreach($favoritos as $favorito) {
-            array_push($fav, $favorito['url']);
-        }
+        $favoriteformat = $this->favoriteFormat($favorites);
 
-        return view('pelicula', compact('pelicula', 'actores', 'favoritos', 'fav'));
+        return view('film', compact('film', 'actors', 'favorites', 'favoriteformat'));
     }
 
-    public function favoritos() {
-        $actores = $this->peticiones->favoritos($this->getFavoritos());
+    /*
+     * Muestra el listado de favoritos del usuario.
+     */
+    public function favorites() {
+        $actors = $this->petitions->getFavorites($this->favoritesToAPI());
+        
+        $favoriteformat = $this->favoriteFormat($actors);
 
-        $fav = [];
-        foreach($actores as $favorito) {
-            array_push($fav, $favorito['url']);
-        }
-
-        return view('favoritos', compact('actores', 'fav'));
+        return view('favorites', compact('actors', 'favoriteformat'));
     }
 
-    public function getFavoritos() {
-        $f = [];
-        foreach(Auth::user()->favoritos as $favorito) {
-            array_push($f, $favorito->api_id);
+    /*
+     * Formatea los favoritos del usuario para la API.
+     */
+    public function favoritesToAPI() {
+        $favorites_api = [];
+        foreach(Auth::user()->favorites as $favorite) {
+            array_push($favorites_api, $favorite->api_id);
         }
 
-        return $f;
+        return $favorites_api;
     }
 
-    public function addFav($id) {
+    /*
+     * Formatea los favoritos de la API para la vista.
+     */
+    public function favoriteFormat($favorites) {
+        $favoriteformat = [];
+
+        foreach($favorites as $favorite) {
+            array_push($favoriteformat, $favorite['url']);
+        }
+
+        return $favoriteformat;
+    }
+
+    /*
+     * Añade el actor a favorito.
+     * 
+     * Si el actor no existe lo crea y lo añade.
+     * Si el actor está en favoritos, lo elimina de la lista de favoritos.
+     */
+    public function addFavorite($id) {
         if(empty(Actor::where('api_id', $id)->get()[0])) {
             $actor = new Actor;
             $actor->api_id = $id;
             $actor->save();
 
-            Auth::user()->favoritos()->attach($actor->id);
+            Auth::user()->favorites()->attach($actor->id);
         } else {
             $actor = Actor::where('api_id', $id)->get()[0];
             if(in_array($actor->api_id, $this->getFavoritos())) {
-                Auth::user()->favoritos()->detach($actor->id);
+                Auth::user()->favorites()->detach($actor->id);
             } else {
-                Auth::user()->favoritos()->attach($actor->id);
+                Auth::user()->favorites()->attach($actor->id);
             }
         }
         return back();

@@ -1,14 +1,14 @@
 @extends('default')
 
 @section('title')
-    Confirmación de contraseña | Find the Force
+    Password confirmation | Find the Force
 @endsection
 
 @section('contenido')
 <section class="container d-flex flex-grow-1 justify-content-center align-items-center" id="contenido">
     <div class="row">
         <div class="col-md d-flex flex-column justify-content-center">
-            <h1 class="glitch">Acceso<br>Dark Side</h1>
+            <h1 class="glitch">Access<br>Dark Side</h1>
         </div>
         <div class="col-md">
             <div class="card">

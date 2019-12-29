@@ -1,7 +1,7 @@
 @extends('default')
 
 @section('title')
-    Favoritos | Find the Force
+    {{$film['title']}} | Find the Force
 @endsection
 
 @section('contenido')
@@ -10,21 +10,24 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
-                <a href="/" class="btn btn-outline-light ml-0">Películas</a>
+                <a href="/" class="btn btn-outline-light">Films</a>
+                <a href="/favorites" class="btn btn-outline-light">Favorite characters</a>
             </div>
         </div>
         <div class="col-md">
             <div class="card card-long">
                 <div class="card-body">
-                    <h2>Favoritos</h2>
+                    <h2>{{$film['title']}}</h2>
+                    <p>{{$film['opening_crawl']}}</p>
+                    <h5>Characters</h5>
                     <ul>
-                        @foreach ($actores as $actor)
+                        @foreach ($actors as $actor)
                             @php
                                 $url = explode('/', $actor['url']);
                             @endphp
                             <li>
                                     {{$actor['name']}}
-                                    @if (in_array($actor['url'], $fav))
+                                    @if (in_array($actor['url'], $favoriteformat))
                                         <a href="/actor/{{$url['5']}}/fav"><i class="fas fa-heart"></i></a></li>
                                     @else
                                         <a href="/actor/{{$url['5']}}/fav"><i class="far fa-heart"></i></a></li>

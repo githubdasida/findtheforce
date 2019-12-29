@@ -1,16 +1,16 @@
 @extends('default')
 
 @section('title')
-    Registro | Find the Force
+    Register | Find the Force
 @endsection
 
 @section('contenido')
 <section class="container d-flex flex-grow-1 justify-content-center align-items-center" id="contenido">
     <div class="row">
         <div class="col-md d-flex flex-column justify-content-center">
-            <h1 class="glitch">Registro</h1>
+            <h1 class="glitch">Register</h1>
             <div class="botones d-flex">
-                <a href="{{ route('login') }}" class="btn btn-outline-light ml-0">Iniciar Sesión</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-light ml-0">Log in</a>
             </div>
         </div>
         <div class="col-md">

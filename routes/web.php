@@ -13,7 +13,7 @@
 
 use Illuminate\Support\Facades\Auth;
 
-
+//Ruta Inicial.
 Route::get('/', function() {
     if(Auth::user()){
        return redirect('/home');
@@ -22,13 +22,23 @@ Route::get('/', function() {
     }
 });
 
+//Ruta por defecto de laravel.
 Route::get('/welcome', function () {
     return view('welcome');
-})->middleware('password.confirm');
+});
 
+//Rutas de autenticación.
 Auth::routes(['verify' => true]);
 
+
+ //  Ruta Principal - Listado de películas.
 Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::get('/pelicula/{id}', 'HomeController@show')->middleware('verified');
-Route::get('/actor/{id}/fav', 'HomeController@addFav')->middleware('verified');
-Route::get('/favoritos', 'HomeController@favoritos')->middleware('verified')->middleware('password.confirm');
+
+ //  Ruta Películas - Muestra la película seleccionada con sus actores. 
+Route::get('/film/{id}', 'HomeController@show')->middleware('verified');
+
+ //  Ruta Añadir Actor a favoritos - Añade o elimina al actor de la lista de favoritos.  
+Route::get('/actor/{id}/fav', 'HomeController@addFavorite')->middleware('verified');
+
+ //  Ruta favoritos - Muestra el listado de favoritos del usuario, requiere confirmación de contraseña. 
+Route::get('/favorites', 'HomeController@favorites')->middleware('verified')->middleware('password.confirm');

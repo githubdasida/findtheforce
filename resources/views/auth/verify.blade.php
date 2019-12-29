@@ -1,14 +1,14 @@
 @extends('default')
 
 @section('title')
-    Verificación requerida | Find the Force
+    Verification Required | Find the Force
 @endsection
 
 @section('contenido')
 <section class="container d-flex flex-grow-1 justify-content-center align-items-center" id="contenido">
     <div class="row">
         <div class="col-md d-flex flex-column justify-content-center">
-            <h1 class="glitch">Verificar<br>Email</h1>
+            <h1 class="glitch">Verify<br>Email</h1>
         </div>
         <div class="col-md">
             <div class="card card-long">

@@ -10,15 +10,15 @@
         <div class="col-md d-flex flex-column justify-content-center">
             <h1 class="glitch">Find<br>the Force</h1>
             <div class="botones d-flex">
-                <a href="/favoritos" class="btn btn-outline-light ml-0">Personajes Favoritos</a>
+                <a href="/favorites" class="btn btn-outline-light ml-0">Favorite characters</a>
             </div>
         </div>
         <div class="col-md">
             <div class="card card-long">
                 <div class="card-body">
-                    <h2>Películas</h2>
+                    <h2>Films</h2>
                     <ul>
-                        @foreach ($r['results'] as $film)
+                        @foreach ($response['results'] as $film)
                             @php
                                 $url = explode('/', $film['url']);
                             @endphp
