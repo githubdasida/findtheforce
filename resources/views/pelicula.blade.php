@@ -27,7 +27,7 @@
                             @endphp
                             <li>
                                     {{$actor['name']}}
-                                    @if (in_array($url[5], $favoritos))
+                                    @if (in_array($actor['url'], $fav))
                                         <a href="/actor/{{$url['5']}}/fav"><i class="fas fa-heart"></i></a></li>
                                     @else
                                         <a href="/actor/{{$url['5']}}/fav"><i class="far fa-heart"></i></a></li>
