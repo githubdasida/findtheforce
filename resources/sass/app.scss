@@ -33,6 +33,12 @@
     background-position: center;
     background-size: cover;
 
+    .navbar-expand-lg .navbar-collapse {
+        display: -webkit-box !important;
+        display: flex !important;
+        flex-basis: auto;
+    }
+
     header {
         .logo {
             width: 175px;
